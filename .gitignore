@@ -1,0 +1,13 @@
+# Eclipse
+.settings/
+.classpath
+.project
+
+# Maven
+target/
+
+# vim
+*~
+
+# Misc
+/src/test/

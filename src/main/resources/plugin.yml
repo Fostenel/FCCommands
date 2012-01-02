@@ -6,4 +6,4 @@ commands:
   fcc:
     description: Main command for FCCommands.
     permission: fccommands.fcc
-    usage: /fcc bleh - Does nothing
+    usage: /fcc reload - Reloads plugin configuration

@@ -3,7 +3,7 @@ main: biz.itechsolutions.bukkitplugin.FCCommands.FCCommands
 version: 0.0.1
 
 commands:
-  fccommands:
+  fcc:
     description: Main command for FCCommands.
-    permission: fccommands.fccommands
-    usage: /fccommands bleh - Does nothing
+    permission: fccommands.fcc
+    usage: /fcc bleh - Does nothing

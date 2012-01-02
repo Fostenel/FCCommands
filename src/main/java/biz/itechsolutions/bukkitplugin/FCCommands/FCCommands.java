@@ -1,5 +1,5 @@
 /*
- * FCCommands - Basic commands for a Minecraft CraftBukkit server.
+ * FC Commands - Basic commands for a Minecraft CraftBukkit server.
  * Copyright (C) 2011, 2012 Joel Green <jgreen@itechsolutions.biz>
  *
  * This program is free software: you can redistribute it and/or modify
@@ -26,17 +26,22 @@ import org.bukkit.entity.Player;
 import org.bukkit.plugin.java.JavaPlugin;
 
 /**
- * FCCommands
+ * @author Joel Green
+ * @version 0.0.1
+ * 
+ * The FCCommands class is the main class for the plugin.
  *
  */
 public class FCCommands extends JavaPlugin {
     Logger log = Logger.getLogger("Minecraft.FCCommands");
 
     public void onDisable() {
+    	saveConfig();
     	consoleMsg("Plugin Disabled");
     }
 
     public void onEnable() {
+    	getConfig();
         consoleMsg("Plugin Version " + this.getDescription().getVersion() + " Enabled");
     }
     
@@ -46,18 +51,28 @@ public class FCCommands extends JavaPlugin {
     
     public boolean onCommand(CommandSender sender, Command cmd, String commandLabel, String[] args) {
     	Player player = null;
+
     	if (sender instanceof Player) {
     		player = (Player) sender;
     	}
     	
-    	if(cmd.getName().equalsIgnoreCase("FCCommands")) {
-    		if (player == null) {
-    			consoleMsg(cmd.getName() + " was run from the console!");
-    		} else {
-    			consoleMsg(cmd.getName() + " was run by " + sender.getName() + "!");
+    	if(cmd.getName().equalsIgnoreCase("fcc")) {
+     		if (args[0].equalsIgnoreCase("reload")) {
+    			reloadConfig();
+    			consoleMsg("Config reloaded");
+    			if (player != null) {
+    				sender.sendMessage("FCCommands configureation reloaded.");
+    			}
+    			return true;
+     		} else {
+    			if (player == null) {
+    				consoleMsg(cmd.getName() + " with no arguments was run from the console!");
+	    		} else {
+	    			consoleMsg(cmd.getName() + " was run with no arguments by " + sender.getName() + "!");
+	    		}
+	    		sender.sendMessage("You ran the " + cmd.getName() + " command with no arguments!!");
+	    		return false;
     		}
-    		sender.sendMessage("You ran the FCCommands command!!");
-    		return true;
     	}
     	return false;
     }

@@ -1,9 +1,12 @@
 name: FCCommands
 main: biz.itechsolutions.bukkitplugin.FCCommands.FCCommands
 version: 0.0.1
+author: Joel Green
+website: https://github.com/jcgreen99/FCCommands
 
 commands:
-  fcc:
+  fccommands:
+    aliases: [fcc]
     description: Main command for FCCommands.
     permission: fccommands.fcc
-    usage: /fcc reload - Reloads plugin configuration
+    usage: Usage - /fcc reload - Reloads plugin configuration

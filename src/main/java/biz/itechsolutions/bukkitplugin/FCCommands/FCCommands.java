@@ -56,8 +56,11 @@ public class FCCommands extends JavaPlugin {
     		player = (Player) sender;
     	}
     	
-    	if(cmd.getName().equalsIgnoreCase("fcc")) {
-     		if (args[0].equalsIgnoreCase("reload")) {
+    	if(cmd.getName().equalsIgnoreCase("fccommands")) {
+    		// Return false to show the 'usage' since we have no use without args at the moment
+    		if (args.length == 0) return false;
+
+    		if (args[0].equalsIgnoreCase("reload")) {
     			reloadConfig();
     			consoleMsg("Config reloaded");
     			if (player != null) {
@@ -65,12 +68,6 @@ public class FCCommands extends JavaPlugin {
     			}
     			return true;
      		} else {
-    			if (player == null) {
-    				consoleMsg(cmd.getName() + " with no arguments was run from the console!");
-	    		} else {
-	    			consoleMsg(cmd.getName() + " was run with no arguments by " + sender.getName() + "!");
-	    		}
-	    		sender.sendMessage("You ran the " + cmd.getName() + " command with no arguments!!");
 	    		return false;
     		}
     	}
